@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: sub category table
+      author: Abuzar
+      changes:
+        - createTable:
+            tableName: sub_categories
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: parent_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: category_sub_category_id_fk
+                    references: category(id)
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_favorite
+                  type: boolean
+              - column:
+                  name: is_visible
+                  type: boolean

@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: creating category table
+      author: Abuzar
+      changes:
+        - createTable:
+            tableName: category
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: is_favorite
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_visible
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
