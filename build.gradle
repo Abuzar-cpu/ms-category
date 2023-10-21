@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "$springframeworkVersion"
+    id 'io.spring.dependency-management' version "$dependencyManagementVersion"
+    id 'groovy'
+}
+
+group = 'academy.ingress'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.liquibase:liquibase-core'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'org.postgresql:postgresql'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa',
+            version: "$springDataJpaVersion"
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: "$springdocOpenapiVersion"
+
+    testImplementation group: 'org.spockframework', name: 'spock-spring', version: "$spockVersion"
+    implementation group: 'io.github.benas', name: 'random-beans', version: "$randomBeansVersion"
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation',
+            version: "$springBootStartValidationVersion"
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version:
+            "$hibernateValidatorVersion"
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version:
+            "$aopVersion"
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
